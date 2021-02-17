@@ -18,6 +18,9 @@ os.chdir('/home')
 pwd_str = os.getcwd()
 # 경로 위치 리턴
 
+errormsg_str = os.strerror(5)
+# 에러코드에 해당하는 메시지 리턴
+
 str = '/home/mytext.txt'
 dirname_str = os.path.dirname(str)
 # 파일 경로 리턴
@@ -30,6 +33,10 @@ dir_base_tuple = os.path.split(str)
 
 os.system('ls -al')
 # 시스템 명령어 호출(결과값 print)
+
+os.startfile('test.txt')
+# 경로를 os에서 지정한 프로그램으로 실행
+# system과 다른점은 system은 잠시 멈추지만 startfile은 안 멈춤
 
 f_str = os.popen('ls -al').read()
 # 시스템 결과값 리턴

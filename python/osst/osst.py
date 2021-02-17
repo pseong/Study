@@ -7,19 +7,22 @@ environ_str = os.environ.get('PATH')
 # 특정 환경변수값
 
 os.chdir('/home')
-# 디렉터리 위치 변경
+# 경로 위치 변경
 
 pwd_str = os.getcwd()
-# 디렉터리 위치 리턴
+# 경로 위치 리턴
 
 str = '/home/mytext.txt'
 dirname_str = os.path.dirname(str)
-# 파일 디렉터리 리턴
+# 파일 경로 리턴
 
 basename_str = os.path.basename(str)
 # 경로 파일명 리턴
 
-s = os.system('ls -al')
+dir_base_tuple = os.path.split(str)
+# 경로와 파일명 리턴
+
+os.system('ls -al')
 # 시스템 명령어 호출(결과값 print)
 
 f_str = os.popen('ls -al').read()
@@ -35,10 +38,13 @@ os.rmdir('mydir')
 # 파일 삭제
 
 # os.rename('a', 'b')
-# 파일 이름 a에서 b로 변경
+# 파일 이름 a에서 b로 변경 또는 이동
 
-dir_list = os.listdir()
-# 디렉터리 목록 티런
+# os.renames('a', 'b')
+# 파일 이름 a에서 b로 변경 또는 이동(경로 자동 생성)
+
+dir_list = os.listdir('.')
+# 경로 목록 티런
 
 os.makedirs('dir/sub_dir')
 # 하위 경로 폴더 생성
@@ -52,5 +58,25 @@ os.removedirs('dir/sub_dir')
 os.rmdir('dir2')
 # 폴더 삭제
 
-# stat_str = os.stat('readme.md')
+os.walk('.')
+# 입력받은 경로부터 모든 하위경로 탐색
+#   for path,dirs,files in os.walk(' '):
+#       print(path, dirs, files)
+
+os.walk('.', topdown=False)
+# os.walk('.')의 반대
+#   for path,dirs,files in os.walk(' ', topdown=False):
+#       print(path, dirs, files)
+
+# stat_str = os.stat('')
 # 파일 상태 확인
+
+os.access('.', os.F_OK)
+# F_OK 존재여부
+# R_OK 읽기 가능여부
+# W_OK 쓰기 가능여부
+# X_OK 실행 가능여부
+
+os.utime('.', None)
+# 경로에 해당하는 atime(에세스 시간) mtime(수정 시간) 변경
+# None일경우 현재 시간으로 수정

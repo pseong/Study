@@ -6,6 +6,12 @@ environ_dic = os.environ
 environ_str = os.environ.get('PATH')
 # 특정 환경변수값
 
+env_str = os.getenv('PATH', 'value')
+# 해당 환경변수 리턴 없을경우 value 리턴 value 없으면 None 리턴
+
+os.putenv('name', 'value')
+# 해당 환경변수 name을 value로 설정
+
 os.chdir('/home')
 # 경로 위치 변경
 
@@ -80,3 +86,22 @@ os.access('.', os.F_OK)
 os.utime('.', None)
 # 경로에 해당하는 atime(에세스 시간) mtime(수정 시간) 변경
 # None일경우 현재 시간으로 수정
+
+r,w = os.pipe()
+# 파이프 생성
+
+rd = os.fdopen(r)
+# 파일 디스크립터를 이용해 파일 객체 생성
+
+oldmask = os.umask(777)
+# 이후에 오픈된 파일을 (mode & ~umask)로 변경
+
+p = popen('dir', 'r')
+# 인자로 전달된 명령을 수행하며 pipe 오픈
+
+os.name
+# 운영체제 이름 
+
+os.getpid()
+# 현재 프로세스 아이디 리턴
+
